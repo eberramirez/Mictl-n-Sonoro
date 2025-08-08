@@ -3,7 +3,7 @@ import CulturalSelector from './CulturalSelector';
 import { CULTURAS_PREHISPANICAS } from '../utils/culturalData';
 import '../styles/components.css';
 
-const StoryForm = ({ onSubmit, isLoading }) => {
+const StoryForm = ({ onSubmit, isLoading, onViewSavedStories }) => {
   const [formData, setFormData] = useState({
     cultura: 'mexica',
     tipoHistoria: 'mito',
@@ -178,6 +178,18 @@ const StoryForm = ({ onSubmit, isLoading }) => {
             Leyenda Zapoteca
           </button>
         </div>
+      </div>
+
+      {/* NUEVO: Botón Ver Cuentos Guardados */}
+      <div className="saved-stories-section">
+        <button 
+          type="button" 
+          onClick={onViewSavedStories}
+          className="view-saved-btn cultural-btn"
+          disabled={isLoading}
+        >
+          📚 Ver Cuentos Guardados
+        </button>
       </div>
     </div>
   );

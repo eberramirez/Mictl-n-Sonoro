@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Mictl-n-Sonoro/static/css/main.f694b7a2.css",
+    "main.js": "/Mictl-n-Sonoro/static/js/main.3af3c25a.js",
+    "static/media/fondo.jpg": "/Mictl-n-Sonoro/static/media/fondo.69eec0344352eb95ff8b.jpg",
+    "index.html": "/Mictl-n-Sonoro/index.html",
+    "main.f694b7a2.css.map": "/Mictl-n-Sonoro/static/css/main.f694b7a2.css.map",
+    "main.3af3c25a.js.map": "/Mictl-n-Sonoro/static/js/main.3af3c25a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f694b7a2.css",
+    "static/js/main.3af3c25a.js"
+  ]
+}

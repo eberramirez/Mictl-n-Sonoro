@@ -43,7 +43,7 @@ html {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #051619 0%, #072e33 50%, #40c7b8 100%);
   position: relative;
 }
 
@@ -393,7 +393,7 @@ html {
   background: linear-gradient(135deg, rgba(79, 70, 229, 0.02) 0%, rgba(99, 102, 241, 0.02) 100%);
   border: 1px solid var(--borde-suave);
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem; /* Reducido para el botón de abajo */
   max-width: 500px;
   width: 100%;
   border-radius: 16px;
@@ -451,6 +451,35 @@ html {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+}
+
+/* ===== BOTÓN PARA VER CUENTOS GUARDADOS EN EL FORMULARIO ===== */
+.form-view-saved-btn {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  border: none;
+  color: var(--texto-claro);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  box-shadow: 
+    0 4px 6px rgba(139, 92, 246, 0.2),
+    0 10px 15px rgba(139, 92, 246, 0.1);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  max-width: 300px;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.form-view-saved-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 12px rgba(139, 92, 246, 0.3),
+    0 20px 25px rgba(139, 92, 246, 0.15);
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
 }
 
 .decision-prompt {
@@ -577,6 +606,94 @@ html {
   margin-bottom: clamp(1.5rem, 3vw, 2rem);
 }
 
+/* ===== BOTONES DE LA VISTA DE HISTORIA - SEPARADOS ===== */
+.story-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 1.5rem 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Botón para volver al formulario */
+.story-back-btn {
+  background: linear-gradient(135deg, #40c7b8 0%, #6ddac0 100%);
+  color: white;
+  border: none;
+  padding: 0.875rem 1.75rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 8px rgba(64, 199, 184, 0.25),
+    0 12px 16px rgba(109, 218, 192, 0.15);
+  letter-spacing: 0.025em;
+}
+
+.story-back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 12px rgba(64, 199, 184, 0.35),
+    0 16px 20px rgba(109, 218, 192, 0.25);
+  background: linear-gradient(135deg, #6ddac0 0%, #40c7b8 100%);
+}
+
+/* Botón para guardar cuento */
+.story-save-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  padding: 0.875rem 1.75rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.25);
+  letter-spacing: 0.025em;
+}
+
+.story-save-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(16, 185, 129, 0.35);
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+.story-save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Botón para ver cuentos guardados en historia */
+.story-view-saved-btn {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+  border: none;
+  padding: 0.875rem 1.75rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(139, 92, 246, 0.25);
+  letter-spacing: 0.025em;
+}
+
+.story-view-saved-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(139, 92, 246, 0.35);
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+}
+
 .back-to-form-btn {
   background: linear-gradient(135deg, #40c7b8 0%, #6ddac0 100%);
   color: white;
@@ -693,7 +810,21 @@ html {
 
   .cultural-examples {
     padding: 1rem;
-    margin: 1rem 0;
+    margin: 1rem 0 1rem 0;
+  }
+
+  /* Botones de historia en móviles */
+  .story-buttons-container {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .story-back-btn,
+  .story-save-btn,
+  .story-view-saved-btn {
+    width: 100%;
+    max-width: 280px;
   }
 }
 
@@ -712,11 +843,6 @@ html {
     border-radius: 16px;
     min-height: 280px;
   }
-  
-  .back-to-form-btn {
-    width: 100%;
-    max-width: 280px;
-  }
 
   .form-group input,
   .form-group textarea,
@@ -725,6 +851,7 @@ html {
   }
 
   .cultural-btn,
+  .form-view-saved-btn,
   .decision-btn {
     width: 100%;
     max-width: 100%;
@@ -738,6 +865,23 @@ html {
   .form-row .form-group {
     max-width: 100%;
     min-width: auto;
+  }
+
+  .back-to-form-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  /* Botones de historia en móviles pequeños */
+  .story-buttons-container {
+    padding: 0.75rem;
+  }
+
+  .story-back-btn,
+  .story-save-btn,
+  .story-view-saved-btn {
+    width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -765,5 +909,877 @@ html {
   
   .app-main {
     padding: 1rem;
+  }
+
+  .story-buttons-container {
+    flex-direction: row;
+    padding: 0.5rem;
+  }
+}
+/* ===== CUENTOS GUARDADOS - NOMBRES ÚNICOS ===== */
+
+/* Contenedor principal */
+.biblioteca-cuentos-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.biblioteca-header-section {
+  margin-bottom: 2rem;
+}
+
+.biblioteca-top-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.biblioteca-main-title {
+  color: #051619;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Estadísticas */
+.biblioteca-stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.biblioteca-stat-box {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(109, 218, 192, 0.2);
+}
+
+.biblioteca-stat-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #40c7b8;
+  margin-bottom: 0.5rem;
+}
+
+.biblioteca-stat-name {
+  font-size: 0.875rem;
+  color: #072e33;
+  font-weight: 500;
+}
+
+/* Grid de cuentos */
+.biblioteca-cuentos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.biblioteca-cuento-tarjeta {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(109, 218, 192, 0.2);
+  transition: all 0.3s ease;
+}
+
+.biblioteca-cuento-tarjeta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.biblioteca-cuento-titulo h3 {
+  color: #051619;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.biblioteca-cuento-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.biblioteca-etiqueta-cultura {
+  background: #40c7b8;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.biblioteca-fecha-creacion {
+  color: #072e33;
+  font-size: 0.875rem;
+}
+
+.biblioteca-resumen-cuento {
+  margin-bottom: 1rem;
+}
+
+.biblioteca-resumen-cuento p {
+  color: #051619;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.biblioteca-datos-extra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(109, 218, 192, 0.2);
+}
+
+.biblioteca-palabras-total, .biblioteca-tipo-historia {
+  font-size: 0.875rem;
+  color: #072e33;
+  font-weight: 500;
+}
+
+.biblioteca-botones-accion {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.biblioteca-btn-leer {
+  background: linear-gradient(135deg, #40c7b8 0%, #6ddac0 100%);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.biblioteca-btn-leer:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(64, 199, 184, 0.25);
+}
+
+.biblioteca-btn-eliminar {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.biblioteca-btn-eliminar:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.25);
+}
+
+.biblioteca-btn-eliminar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Estados especiales */
+.biblioteca-estado-vacio {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  border: 1px solid rgba(109, 218, 192, 0.2);
+}
+
+.biblioteca-icono-vacio {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+.biblioteca-estado-vacio h3 {
+  color: #051619;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.biblioteca-estado-vacio p {
+  color: #072e33;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* Estados de carga */
+.biblioteca-cargando {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  border: 1px solid rgba(109, 218, 192, 0.2);
+}
+
+.biblioteca-cargando h3 {
+  color: #051619;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.biblioteca-cargando p {
+  color: #072e33;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* Spinner principal */
+.biblioteca-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(64, 199, 184, 0.2);
+  border-top: 4px solid #40c7b8;
+  border-radius: 50%;
+  animation: biblioteca-girar 1s linear infinite;
+  margin: 0 auto 1.5rem;
+}
+
+@keyframes biblioteca-girar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Spinner de pulsos */
+.biblioteca-pulsos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+}
+
+.biblioteca-punto-pulso {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #40c7b8;
+  animation: biblioteca-pulsar 1.4s ease-in-out infinite both;
+}
+
+.biblioteca-punto-pulso:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.biblioteca-punto-pulso:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.biblioteca-punto-pulso:nth-child(3) {
+  animation-delay: 0s;
+}
+
+@keyframes biblioteca-pulsar {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Skeleton loading */
+.biblioteca-tarjeta-skeleton {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(109, 218, 192, 0.2);
+  animation: biblioteca-skeleton-parpadeo 1.5s infinite ease-in-out alternate;
+}
+
+.biblioteca-linea-skeleton {
+  height: 1rem;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  animation: biblioteca-onda-skeleton 1.5s infinite;
+}
+
+.biblioteca-linea-skeleton.corta {
+  width: 60%;
+}
+
+.biblioteca-linea-skeleton.media {
+  width: 80%;
+}
+
+.biblioteca-linea-skeleton.larga {
+  width: 100%;
+}
+
+@keyframes biblioteca-skeleton-parpadeo {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes biblioteca-onda-skeleton {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Overlay de carga para tarjetas */
+.biblioteca-overlay-carga {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  backdrop-filter: blur(2px);
+}
+
+.biblioteca-mini-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(64, 199, 184, 0.2);
+  border-top: 2px solid #40c7b8;
+  border-radius: 50%;
+  animation: biblioteca-girar 0.8s linear infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .biblioteca-cuentos-wrapper {
+    padding: 1rem;
+  }
+  
+  .biblioteca-top-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .biblioteca-main-title {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+  
+  .biblioteca-cuentos-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .biblioteca-cuento-tarjeta {
+    padding: 1rem;
+  }
+  
+  .biblioteca-stats-container {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  
+  .biblioteca-stat-box {
+    padding: 1rem;
+  }
+  
+  .biblioteca-stat-value {
+    font-size: 1.5rem;
+  }
+
+  .biblioteca-cargando {
+    padding: 3rem 1rem;
+  }
+
+  .biblioteca-cargando h3 {
+    font-size: 1.25rem;
+  }
+
+  .biblioteca-estado-vacio {
+    padding: 2rem 1rem;
+  }
+
+  .biblioteca-estado-vacio h3 {
+    font-size: 1.25rem;
+  }
+}
+
+/* ===== ESTILOS PARA TEXTO DE CARGA - AGREGAR AL FINAL DEL CSS ===== */
+
+/* Estado de carga con texto personalizado */
+.biblioteca-cargando-texto {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  border: 1px solid rgba(109, 218, 192, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 6px rgba(5, 22, 25, 0.06),
+    0 12px 16px rgba(64, 199, 184, 0.08);
+}
+
+.biblioteca-cargando-titulo {
+  color: #051619;
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.biblioteca-cargando-mensaje {
+  color: #072e33;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.biblioteca-cargando-descripcion {
+  color: #072e33;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+  line-height: 1.4;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* Spinner con mejor integración */
+.biblioteca-spinner-mejorado {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(64, 199, 184, 0.2);
+  border-top: 4px solid #40c7b8;
+  border-radius: 50%;
+  animation: biblioteca-girar 1s linear infinite;
+  margin: 0 auto 1.5rem;
+  position: relative;
+}
+
+.biblioteca-spinner-mejorado::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 4px solid transparent;
+  border-top: 4px solid rgba(64, 199, 184, 0.4);
+  border-radius: 50%;
+  animation: biblioteca-girar 2s linear infinite reverse;
+}
+
+/* Pulsos con colores del tema */
+.biblioteca-pulsos-tematicos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+}
+
+.biblioteca-punto-tematico {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  animation: biblioteca-pulsar-tematico 1.4s ease-in-out infinite both;
+}
+
+.biblioteca-punto-tematico:nth-child(1) {
+  background: #051619;
+  animation-delay: -0.32s;
+}
+
+.biblioteca-punto-tematico:nth-child(2) {
+  background: #40c7b8;
+  animation-delay: -0.16s;
+}
+
+.biblioteca-punto-tematico:nth-child(3) {
+  background: #6ddac0;
+  animation-delay: 0s;
+}
+
+@keyframes biblioteca-pulsar-tematico {
+  0%, 80%, 100% {
+    transform: scale(0.5);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Container de carga completo */
+.biblioteca-estado-carga-completo {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(109, 218, 192, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 6px rgba(5, 22, 25, 0.06),
+    0 12px 16px rgba(64, 199, 184, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.biblioteca-estado-carga-completo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(64, 199, 184, 0.1), transparent);
+  animation: biblioteca-brillo 2s infinite;
+}
+
+@keyframes biblioteca-brillo {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Responsive para estados de carga */
+@media (max-width: 768px) {
+  .biblioteca-cargando-texto {
+    padding: 3rem 1rem;
+  }
+
+  .biblioteca-cargando-titulo {
+    font-size: 1.5rem;
+  }
+
+  .biblioteca-cargando-mensaje {
+    font-size: 1rem;
+  }
+
+  .biblioteca-estado-carga-completo {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .biblioteca-cargando-texto {
+    padding: 2rem 0.75rem;
+  }
+
+  .biblioteca-cargando-titulo {
+    font-size: 1.25rem;
+  }
+
+  .biblioteca-cargando-mensaje {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== ESTADO DE CARGA PARA CUENTOS GUARDADOS ===== */
+/* Agrega esto al final de tu CSS */
+
+.carga-cuentos-guardados {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.carga-spinner-container {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.carga-spinner-principal {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(64, 199, 184, 0.2);
+  border-top: 4px solid #40c7b8;
+  border-radius: 50%;
+  animation: girar-carga 1s linear infinite;
+  margin: 0 auto;
+  position: relative;
+}
+
+.carga-spinner-principal::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 2px solid rgba(109, 218, 192, 0.3);
+  border-top: 2px solid #6ddac0;
+  border-radius: 50%;
+  animation: girar-carga 2s linear infinite reverse;
+}
+
+@keyframes girar-carga {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.carga-titulo {
+  color: #051619;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.025em;
+}
+
+.carga-mensaje {
+  color: #072e33;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  opacity: 0.9;
+  animation: parpadeo-texto 2s ease-in-out infinite;
+}
+
+.carga-descripcion {
+  color: #072e33;
+  font-size: 0.95rem;
+  opacity: 0.7;
+  font-style: italic;
+  max-width: 400px;
+  line-height: 1.4;
+}
+
+@keyframes parpadeo-texto {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.6; }
+}
+
+/* Puntos de carga animados */
+.carga-puntos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.carga-punto {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  animation: saltar-punto 1.4s ease-in-out infinite both;
+}
+
+.carga-punto:nth-child(1) {
+  background: #051619;
+  animation-delay: -0.32s;
+}
+
+.carga-punto:nth-child(2) {
+  background: #40c7b8;
+  animation-delay: -0.16s;
+}
+
+.carga-punto:nth-child(3) {
+  background: #6ddac0;
+  animation-delay: 0s;
+}
+
+@keyframes saltar-punto {
+  0%, 80%, 100% {
+    transform: scale(0.8) translateY(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1.2) translateY(-10px);
+    opacity: 1;
+  }
+}
+
+/* Container con fondo */
+.carga-container-completo {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  border: 2px solid rgba(109, 218, 192, 0.3);
+  backdrop-filter: blur(15px);
+  box-shadow: 
+    0 8px 16px rgba(5, 22, 25, 0.1),
+    0 20px 40px rgba(64, 199, 184, 0.15);
+  padding: 3rem 2rem;
+  margin: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.carga-container-completo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(64, 199, 184, 0.1), transparent);
+  animation: brillo-carga 3s infinite;
+}
+
+@keyframes brillo-carga {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carga-cuentos-guardados {
+    min-height: 50vh;
+    padding: 2rem 1rem;
+  }
+
+  .carga-titulo {
+    font-size: 1.5rem;
+  }
+
+  .carga-mensaje {
+    font-size: 1rem;
+  }
+
+  .carga-container-completo {
+    margin: 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .carga-spinner-principal {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carga-cuentos-guardados {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .carga-titulo {
+    font-size: 1.25rem;
+  }
+
+  .carga-mensaje {
+    font-size: 0.95rem;
+  }
+
+  .carga-container-completo {
+    padding: 1.5rem 1rem;
+  }
+}
+/* ===== NOTIFICACIÓN DE GUARDADO MEJORADA ===== */
+/* Agregar al final de tu archivo CSS */
+
+.save-notification-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: white !important;
+  padding: 1rem 1.5rem !important;
+  border-radius: 12px !important;
+  box-shadow: 
+    0 8px 25px rgba(16, 185, 129, 0.3),
+    0 4px 10px rgba(5, 150, 105, 0.4) !important;
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  animation: bounce-in 0.5s ease !important;
+  backdrop-filter: blur(10px) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.save-notification-success::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shine 2s infinite;
+}
+
+.save-notification-error {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  color: white !important;
+  padding: 1rem 1.5rem !important;
+  border-radius: 12px !important;
+  box-shadow: 
+    0 8px 25px rgba(239, 68, 68, 0.3),
+    0 4px 10px rgba(220, 38, 38, 0.4) !important;
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  animation: shake 0.5s ease !important;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3) translateY(-50px);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05) translateY(-10px);
+  }
+  70% {
+    transform: scale(0.9) translateY(0);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Responsive para notificaciones */
+@media (max-width: 768px) {
+  .save-notification-success,
+  .save-notification-error {
+    font-size: 0.9rem !important;
+    padding: 0.75rem 1rem !important;
   }
 }
